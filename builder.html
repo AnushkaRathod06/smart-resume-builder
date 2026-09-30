@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Resume - Smart Resume Builder</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="builder-page">
+<nav class="nav">
+  <a class="brand" href="/"><span>✦</span> Smart Resume Builder</a>
+  <a href="/" class="back-link">← Home</a>
+</nav>
+
+<main class="builder-wrap">
+  <div class="builder-heading">
+    <div><div class="pill">RESUME BUILDER</div><h1>Enter your details</h1><p>Fill in the sections below. You can leave sections blank if they don't apply.</p></div>
+    <div class="progress">Ready to build ✨</div>
+  </div>
+
+  <form id="resumeForm">
+    <section class="form-card">
+      <h2>👤 Personal Details</h2>
+      <div class="grid two">
+        <label>Full Name<input name="name" placeholder="e.g. Anushka Rathod" required></label>
+        <label>Professional Title<input name="title" placeholder="e.g. Computer Engineering Student"></label>
+        <label>Email<input type="email" name="email" placeholder="e.g. anushka@email.com"></label>
+        <label>Phone<input name="phone" placeholder="e.g. +91 98765 43210"></label>
+        <label>Location<input name="location" placeholder="e.g. Latur, Maharashtra"></label>
+        <label>LinkedIn / Portfolio<input name="linkedin" placeholder="e.g. linkedin.com/in/yourname"></label>
+      </div>
+    </section>
+
+    <section class="form-card">
+      <h2>🎯 Career Objective</h2>
+      <textarea name="objective" rows="4" placeholder="Write a short professional career objective..."></textarea>
+    </section>
+
+    <section class="form-card">
+      <h2>🎓 Education</h2>
+      <div class="repeat-area" id="educationArea">
+        <div class="repeat-item">
+          <div class="grid two">
+            <label>Course / Degree<input name="education_course[]" placeholder="Diploma in Computer Engineering"></label>
+            <label>Institute<input name="education_institute[]" placeholder="College Name"></label>
+            <label>Year<input name="education_year[]" placeholder="2026"></label>
+            <label>Percentage / CGPA<input name="education_score[]" placeholder="85% / 8.5 CGPA"></label>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="add-btn" onclick="addEducation()">+ Add Education</button>
+    </section>
+
+    <section class="form-card">
+      <h2>💻 Skills</h2>
+      <label>Skills <span class="hint">(separate with commas)</span><input name="skills" placeholder="Python, HTML, CSS, JavaScript, SQL, Power BI"></label>
+    </section>
+
+    <section class="form-card">
+      <h2>📁 Projects</h2>
+      <div id="projectArea">
+        <div class="repeat-item project-item">
+          <div class="grid two">
+            <label>Project Name<input name="project_name[]" placeholder="Smart Resume Builder"></label>
+            <label>Technology<input name="project_tech[]" placeholder="Python, Flask, HTML, CSS"></label>
+          </div>
+          <label>Description<textarea name="project_desc[]" rows="2" placeholder="Briefly describe the project..."></textarea></label>
+        </div>
+      </div>
+      <button type="button" class="add-btn" onclick="addProject()">+ Add Project</button>
+    </section>
+
+    <section class="form-card">
+      <h2>💼 Experience</h2>
+      <div id="experienceArea">
+        <div class="repeat-item">
+          <div class="grid two">
+            <label>Job / Internship Title<input name="exp_title[]" placeholder="Intern"></label>
+            <label>Company<input name="exp_company[]" placeholder="Company Name"></label>
+            <label>Duration<input name="exp_duration[]" placeholder="June 2025 - August 2025"></label>
+          </div>
+          <label>Description<textarea name="exp_desc[]" rows="2" placeholder="What did you work on?"></textarea></label>
+        </div>
+      </div>
+      <button type="button" class="add-btn" onclick="addExperience()">+ Add Experience</button>
+    </section>
+
+    <section class="form-card">
+      <h2>🏆 Certifications & Achievements</h2>
+      <label>Details <span class="hint">(one item per line)</span><textarea name="achievements" rows="5" placeholder="Python Programming Certificate&#10;Participated in college project competition"></textarea></label>
+    </section>
+
+    <section class="form-card">
+      <h2>🌐 Languages</h2>
+      <label>Languages <span class="hint">(separate with commas)</span><input name="languages" placeholder="English, Hindi, Marathi"></label>
+    </section>
+
+    <div class="submit-bar">
+      <button type="button" class="secondary-btn" onclick="document.getElementById('resumeForm').reset()">Reset</button>
+      <button type="submit" class="primary-btn">Generate Resume →</button>
+    </div>
+  </form>
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

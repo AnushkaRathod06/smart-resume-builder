@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Resume Builder</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav class="nav">
+  <div class="brand"><span>✦</span> Smart Resume Builder</div>
+  <a href="/builder" class="nav-btn">Create Resume</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="pill">SMART • SIMPLE • PROFESSIONAL</div>
+    <h1>Build a professional resume in <span>minutes.</span></h1>
+    <p>Create a clean, modern resume by entering your details. Preview it instantly and print or save it as a PDF.</p>
+    <a href="/builder" class="primary-btn">Create My Resume →</a>
+    <div class="mini-stats">
+      <div><b>01</b><small>Enter Details</small></div>
+      <div><b>02</b><small>Preview</small></div>
+      <div><b>03</b><small>Download</small></div>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="resume-mini">
+      <div class="mini-head">
+        <div class="avatar">AR</div>
+        <div><h3>Alex Rathod</h3><p>Software Developer</p></div>
+      </div>
+      <div class="line"></div>
+      <h5>PROFILE</h5><p class="muted">Motivated developer with a passion for building useful digital solutions.</p>
+      <h5>SKILLS</h5>
+      <div class="tags"><i>Python</i><i>HTML</i><i>CSS</i><i>SQL</i></div>
+      <h5>EDUCATION</h5><p class="muted">Diploma in Computer Engineering</p>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="section-title"><div class="pill">FEATURES</div><h2>Everything you need</h2></div>
+  <div class="feature-grid">
+    <article><div class="icon">✎</div><h3>Easy Form</h3><p>Enter your information through simple sections.</p></article>
+    <article><div class="icon">◈</div><h3>Live Preview</h3><p>See your professional resume before printing.</p></article>
+    <article><div class="icon">▣</div><h3>PDF Ready</h3><p>Use the print option to save your resume as PDF.</p></article>
+  </div>
+</section>
+
+<footer>© 2026 Smart Resume Builder • Diploma Project</footer>
+</body>
+</html>

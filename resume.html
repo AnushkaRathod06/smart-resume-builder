@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ data.name }} - Resume</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="resume-page">
+<div class="resume-actions">
+  <a href="/builder" class="secondary-btn">← Edit Resume</a>
+  <button class="primary-btn" onclick="window.print()">🖨 Print / Save PDF</button>
+</div>
+
+<main class="resume-paper">
+  <header class="resume-header">
+    <div>
+      <h1>{{ data.name }}</h1>
+      <h2>{{ data.title }}</h2>
+    </div>
+    <div class="contact">
+      {% if data.email %}<div>✉ {{ data.email }}</div>{% endif %}
+      {% if data.phone %}<div>☎ {{ data.phone }}</div>{% endif %}
+      {% if data.location %}<div>⌖ {{ data.location }}</div>{% endif %}
+      {% if data.linkedin %}<div>🔗 {{ data.linkedin }}</div>{% endif %}
+    </div>
+  </header>
+
+  {% if data.objective %}
+  <section><h3>PROFILE</h3><p>{{ data.objective }}</p></section>
+  {% endif %}
+
+  {% if data.education %}
+  <section><h3>EDUCATION</h3>
+  {% for e in data.education %}
+    {% if e.course or e.institute %}
+    <div class="resume-row"><div><strong>{{ e.course }}</strong><br><span>{{ e.institute }}</span></div><div class="right">{{ e.year }}{% if e.score %}<br>{{ e.score }}{% endif %}</div></div>
+    {% endif %}
+  {% endfor %}</section>
+  {% endif %}
+
+  {% if data.skills %}
+  <section><h3>SKILLS</h3><div class="resume-tags">{% for s in data.skills %}<span>{{ s }}</span>{% endfor %}</div></section>
+  {% endif %}
+
+  {% if data.projects %}
+  <section><h3>PROJECTS</h3>
+  {% for p in data.projects %}
+    {% if p.name or p.description %}
+    <div class="resume-project"><div class="resume-row"><strong>{{ p.name }}</strong><span class="right">{{ p.tech }}</span></div><p>{{ p.description }}</p></div>
+    {% endif %}
+  {% endfor %}</section>
+  {% endif %}
+
+  {% if data.experience %}
+  <section><h3>EXPERIENCE</h3>
+  {% for e in data.experience %}
+    {% if e.title or e.company %}
+    <div class="resume-project"><div class="resume-row"><strong>{{ e.title }}{% if e.company %} — {{ e.company }}{% endif %}</strong><span class="right">{{ e.duration }}</span></div><p>{{ e.description }}</p></div>
+    {% endif %}
+  {% endfor %}</section>
+  {% endif %}
+
+  {% if data.achievements %}
+  <section><h3>CERTIFICATIONS & ACHIEVEMENTS</h3>
+    <ul>{% for a in data.achievements %}{% if a %}<li>{{ a }}</li>{% endif %}{% endfor %}</ul>
+  </section>
+  {% endif %}
+
+  {% if data.languages %}
+  <section><h3>LANGUAGES</h3><p>{{ data.languages|join(', ') }}</p></section>
+  {% endif %}
+</main>
+</body>
+</html>
